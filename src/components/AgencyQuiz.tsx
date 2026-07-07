@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, CheckCircle2, Lock, ShieldAlert, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Lock, ShieldAlert } from "lucide-react";
 
 type Answer = { label: string; points: 0 | 1 | 2 };
 type Question = {
