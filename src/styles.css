@@ -125,8 +125,6 @@
   box-shadow: none;
   transition: background-color 150ms ease, color 150ms ease;
   cursor: pointer;
-}
-@utility btn-brand {
   &:hover {
     background-color: rgba(25, 26, 55, 0.85);
     color: #f5f5fd;
