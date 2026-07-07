@@ -604,7 +604,7 @@ function Results({
       >
         <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
           Want a second pair of eyes on your{" "}
-          <span className="text-brand-teal">pipeline</span>?
+          <span className="text-brand-teal">pipeline?</span>
         </h3>
         <p className="mt-2 text-sm font-light text-brand-offwhite/85">
           A 30-minute scan of what's working, what's not, and where the leaks are.
