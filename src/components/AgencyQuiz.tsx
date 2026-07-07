@@ -397,47 +397,49 @@ function QuestionCard({
 }) {
   return (
     <div className="animate-in fade-in slide-in-from-right-2 duration-300">
-      <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-        {question.theme}
-      </p>
-      <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-        {question.prompt}
-      </h2>
+      <div className="card-brand">
+        <p className="text-xs font-bold uppercase tracking-wider text-primary">
+          {question.theme}
+        </p>
+        <h2 className="mt-2 text-balance text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl">
+          {question.prompt}
+        </h2>
 
-      <div className="mt-6 grid gap-3">
-        {question.answers.map((a) => {
-          const isSelected = selected === a.points;
-          return (
-            <button
-              key={a.label}
-              onClick={() => onSelect(a.points)}
-              className={
-                "group flex w-full items-center justify-between gap-4 rounded-lg border px-4 py-4 text-left text-sm font-medium transition sm:text-base " +
-                (isSelected
-                  ? "border-primary bg-primary/5 text-foreground"
-                  : "border-border bg-card text-foreground hover:border-primary/40 hover:bg-accent")
-              }
-            >
-              <span>{a.label}</span>
-              <span
+        <div className="mt-6 grid gap-3">
+          {question.answers.map((a) => {
+            const isSelected = selected === a.points;
+            return (
+              <button
+                key={a.label}
+                onClick={() => onSelect(a.points)}
                 className={
-                  "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition " +
+                  "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3 text-left text-sm font-light transition sm:text-base " +
                   (isSelected
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-transparent group-hover:border-primary/50")
+                    ? "border-primary bg-primary/5 text-brand-navy"
+                    : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40 hover:bg-brand-mint")
                 }
               >
-                <CheckCircle2 className="h-3 w-3" />
-              </span>
-            </button>
-          );
-        })}
+                <span>{a.label}</span>
+                <span
+                  className={
+                    "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition " +
+                    (isSelected
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border text-transparent group-hover:border-primary/50")
+                  }
+                >
+                  <CheckCircle2 className="h-3 w-3" />
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {onBack && (
         <button
           onClick={onBack}
-          className="mt-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back
