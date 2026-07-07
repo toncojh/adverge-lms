@@ -342,16 +342,16 @@ function Intro({ onStart }: { onStart: () => void }) {
       <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-navy sm:text-5xl">
         Is Your Agency Failing You?
       </h1>
-      <p className="mt-4 max-w-xl text-balance text-base font-light sm:text-lg">
+      <p className="mt-6 max-w-xl text-balance text-base font-light sm:text-lg">
         10 questions. 2 minutes. Find out if it's time for an honest conversation.
       </p>
 
-      <button onClick={onStart} className="btn-brand mt-8 text-sm">
+      <button onClick={onStart} className="btn-brand mt-10 text-sm">
         Start the assessment
         <ArrowRight className="h-4 w-4" />
       </button>
 
-      <ul className="mt-10 grid gap-3 text-sm font-light sm:grid-cols-3">
+      <ul className="mt-14 grid gap-4 text-sm font-light sm:grid-cols-3">
         {[
           "Built for €1M–€10M businesses",
           "No sales calls to take the quiz",
