@@ -454,27 +454,27 @@ function Teaser({
       <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
         Your preliminary score
       </p>
-      <div className="mt-3 flex items-end gap-3">
+      <div className="mt-4 flex items-end gap-3">
         <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
           {score}
         </span>
         <span className="pb-2 text-lg font-light">/ 20</span>
       </div>
-      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
+      <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
         <TierDot tier={tier.key} />
         {tier.label}
       </div>
 
-      <div className="card-brand mt-8">
+      <div className="card-brand mt-10">
         <div className="flex items-center gap-2 text-sm font-bold text-brand-navy">
           <Lock className="h-4 w-4 text-primary" />
           Unlock your full breakdown
         </div>
-        <p className="mt-2 text-sm font-light">
+        <p className="mt-3 text-sm font-light">
           See exactly which answers drove your score, and what a healthy agency
           relationship looks like on each one.
         </p>
-        <form onSubmit={onSubmit} className="mt-4 space-y-3">
+        <form onSubmit={onSubmit} className="mt-5 space-y-3">
           <input
             type="email"
             required
@@ -492,14 +492,14 @@ function Teaser({
             <ArrowRight className="h-4 w-4" />
           </button>
         </form>
-        <p className="mt-3 text-xs font-light text-brand-navy/60">
+        <p className="mt-4 text-xs font-light text-brand-navy/60">
           No newsletter spam. Used only to send your breakdown and, if you want, one follow-up.
         </p>
       </div>
 
       <button
         onClick={onBack}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
+        className="mt-8 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Change my last answer
