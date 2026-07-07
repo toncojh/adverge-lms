@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Lock, ShieldAlert } from "lucide-react";
 
+
 type Answer = { label: string; points: 0 | 1 | 2 };
 type Question = {
   id: number;
