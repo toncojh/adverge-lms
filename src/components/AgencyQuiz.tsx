@@ -548,24 +548,24 @@ function Results({
           (revealed ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0")
         }
       >
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
           Your result
         </p>
         <div className="mt-3 flex items-end gap-3">
-          <span className="text-6xl font-semibold tracking-tight tabular-nums sm:text-7xl">
+          <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
             {score}
           </span>
-          <span className="pb-2 text-lg text-muted-foreground">/ 20</span>
+          <span className="pb-2 text-lg font-light">/ 20</span>
         </div>
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-medium">
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
           <TierDot tier={tier.key} />
           {tier.label}
         </div>
 
-        <h2 className="mt-6 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+        <h2 className="mt-6 text-balance text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
           {tier.headline}
         </h2>
-        <p className="mt-3 text-balance text-base text-muted-foreground">
+        <p className="mt-3 text-balance text-base font-light">
           {tier.body(weakThemes)}
         </p>
       </div>
@@ -576,64 +576,65 @@ function Results({
           (revealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
-        <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+        <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-navy">
           <ShieldAlert className="h-4 w-4 text-primary" />
           Full breakdown
         </h3>
-        <ul className="mt-4 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
-          {QUESTIONS.map((q, i) => {
-            const pts = answers[i] ?? 0;
-            const chosen = q.answers.find((a) => a.points === pts)!;
-            return (
-              <li key={q.id} className="grid gap-2 p-4 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-4 sm:p-5">
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                      {q.theme}
-                    </span>
-                    <ScorePill points={pts} />
+        <div className="mt-4 rounded-xl bg-brand-mint p-4 sm:p-5">
+          <ul className="divide-y divide-[#f5f5f5] overflow-hidden rounded-xl border-2 border-[#f5f5f5] bg-white">
+            {QUESTIONS.map((q, i) => {
+              const pts = answers[i] ?? 0;
+              const chosen = q.answers.find((a) => a.points === pts)!;
+              return (
+                <li key={q.id} className="grid gap-2 p-5 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-4">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                        {q.theme}
+                      </span>
+                      <ScorePill points={pts} />
+                    </div>
+                    <p className="mt-1 text-sm font-light text-brand-navy">
+                      {q.prompt}
+                    </p>
+                    <p className="mt-2 text-sm font-light">
+                      <span className="font-semibold text-brand-navy">Your answer:</span> {chosen.label}
+                    </p>
+                    <p className="mt-2 text-sm font-light">
+                      <span className="font-semibold text-brand-navy">What healthy looks like:</span>{" "}
+                      {q.healthy}
+                    </p>
                   </div>
-                  <p className="mt-1 text-sm font-medium text-foreground">
-                    {q.prompt}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    <span className="text-foreground">Your answer:</span> {chosen.label}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    <span className="text-foreground">What healthy looks like:</span>{" "}
-                    {q.healthy}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
 
       <div
         className={
-          "mt-10 rounded-xl border border-primary/20 bg-primary/5 p-6 transition-all delay-300 duration-700 sm:p-8 " +
+          "mt-10 rounded-xl p-6 transition-all delay-300 duration-700 sm:p-8 " +
+          "bg-brand-navy text-brand-offwhite " +
           (revealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
-        <h3 className="text-balance text-xl font-semibold tracking-tight sm:text-2xl">
-          Want a second pair of eyes on your pipeline?
+        <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+          Want a second pair of eyes on your{" "}
+          <span className="text-brand-teal">pipeline</span>?
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm font-light text-brand-offwhite/85">
           A 30-minute scan of what's working, what's not, and where the leaks are.
           No pitch, no commitment.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-          >
-            Get a free pipeline scan
+          <a href="#" className="btn-brand text-sm">
+            Get your free pipeline scan
             <ArrowRight className="h-4 w-4" />
           </a>
           <button
             onClick={onRestart}
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-accent"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-brand-offwhite/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-brand-offwhite transition hover:bg-brand-offwhite/10"
           >
             Retake the quiz
           </button>
