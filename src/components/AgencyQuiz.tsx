@@ -281,7 +281,7 @@ export function AgencyQuiz() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-12 sm:px-6 sm:py-20">
         {/* Progress bar */}
         <div className="mb-8 h-1 w-full overflow-hidden rounded-full bg-muted">
           <div
