@@ -384,11 +384,11 @@ function QuestionCard({
         <p className="text-xs font-bold uppercase tracking-wider text-primary">
           {question.theme}
         </p>
-        <h2 className="mt-2 text-balance text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl">
+        <h2 className="mt-4 text-balance text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl">
           {question.prompt}
         </h2>
 
-        <div className="mt-6 grid gap-3">
+        <div className="mt-8 grid gap-4">
           {question.answers.map((a) => {
             const isSelected = selected === a.points;
             return (
@@ -396,7 +396,7 @@ function QuestionCard({
                 key={a.label}
                 onClick={() => onSelect(a.points)}
                 className={
-                  "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3 text-left text-sm font-light transition sm:text-base " +
+                  "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3.5 text-left text-sm font-light transition sm:text-base " +
                   (isSelected
                     ? "border-primary text-brand-navy"
                     : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40")
@@ -422,7 +422,7 @@ function QuestionCard({
       {onBack && (
         <button
           onClick={onBack}
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
+          className="mt-8 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back
