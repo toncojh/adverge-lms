@@ -281,28 +281,20 @@ export function AgencyQuiz() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-8 sm:px-6 sm:py-12">
-        {/* Header / progress */}
-        <header className="mb-8">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <span className="text-sm font-semibold tracking-tight">Adverge</span>
-            </div>
-            {stage === "quiz" && (
-              <span className="text-xs font-medium text-muted-foreground tabular-nums">
-                {current + 1} / {QUESTIONS.length}
-              </span>
-            )}
+        {/* Progress bar */}
+        <div className="mb-8 h-1 w-full overflow-hidden rounded-full bg-muted">
+          <div
+            className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        {stage === "quiz" && (
+          <div className="-mb-2 text-right">
+            <span className="text-xs font-medium text-muted-foreground tabular-nums">
+              {current + 1} / {QUESTIONS.length}
+            </span>
           </div>
-          <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
-            <div
-              className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </header>
+        )}
 
         <main className="flex-1">
           {stage === "intro" && <Intro onStart={() => setStage("quiz")} />}
@@ -375,7 +367,7 @@ function Intro({ onStart }: { onStart: () => void }) {
           "Same patterns we see every week",
         ].map((item) => (
           <li key={item} className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <span>{item}</span>
           </li>
         ))}
@@ -415,20 +407,20 @@ function QuestionCard({
                 className={
                   "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3 text-left text-sm font-light transition sm:text-base " +
                   (isSelected
-                    ? "border-primary bg-primary/5 text-brand-navy"
-                    : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40 hover:bg-brand-mint")
+                    ? "border-primary text-brand-navy"
+                    : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40")
                 }
               >
                 <span>{a.label}</span>
                 <span
                   className={
-                    "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition " +
+                    "grid h-5 w-5 shrink-0 place-items-center rounded-full transition " +
                     (isSelected
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border text-transparent group-hover:border-primary/50")
+                      ? "text-primary"
+                      : "text-transparent group-hover:text-primary/40")
                   }
                 >
-                  <CheckCircle2 className="h-3 w-3" />
+                  <Check className="h-4 w-4" />
                 </span>
               </button>
             );
