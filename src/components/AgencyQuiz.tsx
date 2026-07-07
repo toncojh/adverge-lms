@@ -22,7 +22,7 @@ const QUESTIONS: Question[] = [
       { label: "Honestly, no", points: 2 },
     ],
     healthy:
-      "A healthy agency ties every month back to concrete business outcomes — not just deliverables.",
+      "A healthy agency ties every month back to concrete business outcomes, not just deliverables.",
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ const QUESTIONS: Question[] = [
       { label: "Every single time", points: 2 },
     ],
     healthy:
-      "The first response to weak results should be strategy and craft — not a bigger budget.",
+      "The first response to weak results should be strategy and craft, not a bigger budget.",
   },
   {
     id: 7,
@@ -123,7 +123,7 @@ const QUESTIONS: Question[] = [
       { label: "Impossible to follow", points: 2 },
     ],
     healthy:
-      "If a smart non-marketer can't follow the plan, the plan usually isn't the problem — the strategy is.",
+      "If a smart non-marketer can't follow the plan, the plan usually isn't the problem: the strategy is.",
   },
   {
     id: 10,
@@ -157,7 +157,7 @@ function tierFor(score: number): Tier {
       short: "Fundamentals look healthy.",
       headline: "Your agency is doing the fundamentals right.",
       body: () =>
-        "Nothing in your answers points to the patterns we usually see before a relationship breaks down. Worth a periodic check-in — the best partnerships get audited on purpose, not by accident.",
+        "Nothing in your answers points to the patterns we usually see before a relationship breaks down. Worth a periodic check-in. The best partnerships get audited on purpose, not by accident.",
     };
   }
   if (score <= 13) {
@@ -168,7 +168,7 @@ function tierFor(score: number): Tier {
       headline: "You're not imagining it.",
       body: (weak) =>
         `These are the exact patterns that come up right before people leave an agency${
-          weak.length ? ` — especially around ${joinList(weak)}` : ""
+          weak.length ? ` especially around ${joinList(weak)}` : ""
         }. Worth a second opinion before it gets worse.`,
     };
   }
@@ -180,7 +180,7 @@ function tierFor(score: number): Tier {
     body: (weak) =>
       `You flagged ${
         weak.length ? joinList(weak) : "multiple structural issues"
-      }. You're not stuck — there's a better way to do this, and it starts with an honest look at what you're actually paying for.`,
+      }. You're not stuck. There's a better way to do this, and it starts with an honest look at what you're actually paying for.`,
   };
 }
 
