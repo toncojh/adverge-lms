@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Lead Magnets" },
+      { name: "description", content: "Lead Magnets" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Lead Magnets" },
+      { property: "og:description", content: "Lead Magnets" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Lead Magnets" },
+      { name: "twitter:description", content: "Lead Magnets" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3e640a1d-6fb7-4482-9227-30416088667a/id-preview-cc2401f3--7834fa5d-1ad9-4115-9641-fcb816eee3d2.lovable.app-1783441371354.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3e640a1d-6fb7-4482-9227-30416088667a/id-preview-cc2401f3--7834fa5d-1ad9-4115-9641-fcb816eee3d2.lovable.app-1783441371354.png" },
     ],
     links: [
       {
