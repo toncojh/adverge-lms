@@ -352,26 +352,23 @@ export function AgencyQuiz() {
 function Intro({ onStart }: { onStart: () => void }) {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-brand-navy">
         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         Honest self-assessment
       </div>
-      <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+      <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-navy sm:text-5xl">
         Is Your Agency Failing You?
       </h1>
-      <p className="mt-4 max-w-xl text-balance text-base text-muted-foreground sm:text-lg">
+      <p className="mt-4 max-w-xl text-balance text-base font-light sm:text-lg">
         10 questions. 2 minutes. Find out if it's time for an honest conversation.
       </p>
 
-      <button
-        onClick={onStart}
-        className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      >
+      <button onClick={onStart} className="btn-brand mt-8 text-sm">
         Start the assessment
         <ArrowRight className="h-4 w-4" />
       </button>
 
-      <ul className="mt-10 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
+      <ul className="mt-10 grid gap-3 text-sm font-light sm:grid-cols-3">
         {[
           "Built for €1M–€10M businesses",
           "No sales calls to take the quiz",
@@ -400,47 +397,49 @@ function QuestionCard({
 }) {
   return (
     <div className="animate-in fade-in slide-in-from-right-2 duration-300">
-      <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-        {question.theme}
-      </p>
-      <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-        {question.prompt}
-      </h2>
+      <div className="card-brand">
+        <p className="text-xs font-bold uppercase tracking-wider text-primary">
+          {question.theme}
+        </p>
+        <h2 className="mt-2 text-balance text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl">
+          {question.prompt}
+        </h2>
 
-      <div className="mt-6 grid gap-3">
-        {question.answers.map((a) => {
-          const isSelected = selected === a.points;
-          return (
-            <button
-              key={a.label}
-              onClick={() => onSelect(a.points)}
-              className={
-                "group flex w-full items-center justify-between gap-4 rounded-lg border px-4 py-4 text-left text-sm font-medium transition sm:text-base " +
-                (isSelected
-                  ? "border-primary bg-primary/5 text-foreground"
-                  : "border-border bg-card text-foreground hover:border-primary/40 hover:bg-accent")
-              }
-            >
-              <span>{a.label}</span>
-              <span
+        <div className="mt-6 grid gap-3">
+          {question.answers.map((a) => {
+            const isSelected = selected === a.points;
+            return (
+              <button
+                key={a.label}
+                onClick={() => onSelect(a.points)}
                 className={
-                  "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition " +
+                  "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3 text-left text-sm font-light transition sm:text-base " +
                   (isSelected
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-transparent group-hover:border-primary/50")
+                    ? "border-primary bg-primary/5 text-brand-navy"
+                    : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40 hover:bg-brand-mint")
                 }
               >
-                <CheckCircle2 className="h-3 w-3" />
-              </span>
-            </button>
-          );
-        })}
+                <span>{a.label}</span>
+                <span
+                  className={
+                    "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition " +
+                    (isSelected
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border text-transparent group-hover:border-primary/50")
+                  }
+                >
+                  <CheckCircle2 className="h-3 w-3" />
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {onBack && (
         <button
           onClick={onBack}
-          className="mt-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back
@@ -469,26 +468,26 @@ function Teaser({
 }) {
   return (
     <div className="animate-in fade-in zoom-in-95 duration-500">
-      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
         Your preliminary score
       </p>
       <div className="mt-3 flex items-end gap-3">
-        <span className="text-6xl font-semibold tracking-tight tabular-nums sm:text-7xl">
+        <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
           {score}
         </span>
-        <span className="pb-2 text-lg text-muted-foreground">/ 20</span>
+        <span className="pb-2 text-lg font-light">/ 20</span>
       </div>
-      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-medium">
+      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
         <TierDot tier={tier.key} />
         {tier.label}
       </div>
 
-      <div className="mt-8 rounded-xl border border-border bg-card p-5 sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold">
+      <div className="card-brand mt-8">
+        <div className="flex items-center gap-2 text-sm font-bold text-brand-navy">
           <Lock className="h-4 w-4 text-primary" />
           Unlock your full breakdown
         </div>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm font-light">
           See exactly which answers drove your score, and what a healthy agency
           relationship looks like on each one.
         </p>
@@ -500,27 +499,24 @@ function Teaser({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@company.com"
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+            className="w-full rounded-full border-2 border-[#f5f5f5] bg-white px-5 py-3 text-sm font-light outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
           {emailError && (
-            <p className="text-xs text-destructive">{emailError}</p>
+            <p className="text-xs font-light text-destructive">{emailError}</p>
           )}
-          <button
-            type="submit"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 sm:w-auto"
-          >
+          <button type="submit" className="btn-brand w-full text-sm sm:w-auto">
             Unlock my results
             <ArrowRight className="h-4 w-4" />
           </button>
         </form>
-        <p className="mt-3 text-xs text-muted-foreground">
+        <p className="mt-3 text-xs font-light text-brand-navy/60">
           No newsletter spam. Used only to send your breakdown and, if you want, one follow-up.
         </p>
       </div>
 
       <button
         onClick={onBack}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+        className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Change my last answer
@@ -552,24 +548,24 @@ function Results({
           (revealed ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0")
         }
       >
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
           Your result
         </p>
         <div className="mt-3 flex items-end gap-3">
-          <span className="text-6xl font-semibold tracking-tight tabular-nums sm:text-7xl">
+          <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
             {score}
           </span>
-          <span className="pb-2 text-lg text-muted-foreground">/ 20</span>
+          <span className="pb-2 text-lg font-light">/ 20</span>
         </div>
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-medium">
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
           <TierDot tier={tier.key} />
           {tier.label}
         </div>
 
-        <h2 className="mt-6 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+        <h2 className="mt-6 text-balance text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
           {tier.headline}
         </h2>
-        <p className="mt-3 text-balance text-base text-muted-foreground">
+        <p className="mt-3 text-balance text-base font-light">
           {tier.body(weakThemes)}
         </p>
       </div>
@@ -580,64 +576,65 @@ function Results({
           (revealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
-        <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+        <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-brand-navy">
           <ShieldAlert className="h-4 w-4 text-primary" />
           Full breakdown
         </h3>
-        <ul className="mt-4 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
-          {QUESTIONS.map((q, i) => {
-            const pts = answers[i] ?? 0;
-            const chosen = q.answers.find((a) => a.points === pts)!;
-            return (
-              <li key={q.id} className="grid gap-2 p-4 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-4 sm:p-5">
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                      {q.theme}
-                    </span>
-                    <ScorePill points={pts} />
+        <div className="mt-4 rounded-xl bg-brand-mint p-4 sm:p-5">
+          <ul className="divide-y divide-[#f5f5f5] overflow-hidden rounded-xl border-2 border-[#f5f5f5] bg-white">
+            {QUESTIONS.map((q, i) => {
+              const pts = answers[i] ?? 0;
+              const chosen = q.answers.find((a) => a.points === pts)!;
+              return (
+                <li key={q.id} className="grid gap-2 p-5 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-4">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                        {q.theme}
+                      </span>
+                      <ScorePill points={pts} />
+                    </div>
+                    <p className="mt-1 text-sm font-light text-brand-navy">
+                      {q.prompt}
+                    </p>
+                    <p className="mt-2 text-sm font-light">
+                      <span className="font-semibold text-brand-navy">Your answer:</span> {chosen.label}
+                    </p>
+                    <p className="mt-2 text-sm font-light">
+                      <span className="font-semibold text-brand-navy">What healthy looks like:</span>{" "}
+                      {q.healthy}
+                    </p>
                   </div>
-                  <p className="mt-1 text-sm font-medium text-foreground">
-                    {q.prompt}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    <span className="text-foreground">Your answer:</span> {chosen.label}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    <span className="text-foreground">What healthy looks like:</span>{" "}
-                    {q.healthy}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
 
       <div
         className={
-          "mt-10 rounded-xl border border-primary/20 bg-primary/5 p-6 transition-all delay-300 duration-700 sm:p-8 " +
+          "mt-10 rounded-xl p-6 transition-all delay-300 duration-700 sm:p-8 " +
+          "bg-brand-navy text-brand-offwhite " +
           (revealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
-        <h3 className="text-balance text-xl font-semibold tracking-tight sm:text-2xl">
-          Want a second pair of eyes on your pipeline?
+        <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+          Want a second pair of eyes on your{" "}
+          <span className="text-brand-teal">pipeline</span>?
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm font-light text-brand-offwhite/85">
           A 30-minute scan of what's working, what's not, and where the leaks are.
           No pitch, no commitment.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-          >
-            Get a free pipeline scan
+          <a href="#" className="btn-brand text-sm">
+            Get your free pipeline scan
             <ArrowRight className="h-4 w-4" />
           </a>
           <button
             onClick={onRestart}
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-accent"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-brand-offwhite/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-brand-offwhite transition hover:bg-brand-offwhite/10"
           >
             Retake the quiz
           </button>
