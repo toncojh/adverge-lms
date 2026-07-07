@@ -289,13 +289,6 @@ export function AgencyQuiz() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        {stage === "quiz" && (
-          <div className="-mb-2 text-right">
-            <span className="text-xs font-medium text-muted-foreground tabular-nums">
-              {current + 1} / {QUESTIONS.length}
-            </span>
-          </div>
-        )}
 
         <main className="flex-1">
           {stage === "intro" && <Intro onStart={() => setStage("quiz")} />}
