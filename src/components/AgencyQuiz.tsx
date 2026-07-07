@@ -352,26 +352,23 @@ export function AgencyQuiz() {
 function Intro({ onStart }: { onStart: () => void }) {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-brand-navy">
         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         Honest self-assessment
       </div>
-      <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+      <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-navy sm:text-5xl">
         Is Your Agency Failing You?
       </h1>
-      <p className="mt-4 max-w-xl text-balance text-base text-muted-foreground sm:text-lg">
+      <p className="mt-4 max-w-xl text-balance text-base font-light sm:text-lg">
         10 questions. 2 minutes. Find out if it's time for an honest conversation.
       </p>
 
-      <button
-        onClick={onStart}
-        className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      >
+      <button onClick={onStart} className="btn-brand mt-8 text-sm">
         Start the assessment
         <ArrowRight className="h-4 w-4" />
       </button>
 
-      <ul className="mt-10 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
+      <ul className="mt-10 grid gap-3 text-sm font-light sm:grid-cols-3">
         {[
           "Built for €1M–€10M businesses",
           "No sales calls to take the quiz",
