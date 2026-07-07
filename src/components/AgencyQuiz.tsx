@@ -468,26 +468,26 @@ function Teaser({
 }) {
   return (
     <div className="animate-in fade-in zoom-in-95 duration-500">
-      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
         Your preliminary score
       </p>
       <div className="mt-3 flex items-end gap-3">
-        <span className="text-6xl font-semibold tracking-tight tabular-nums sm:text-7xl">
+        <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
           {score}
         </span>
-        <span className="pb-2 text-lg text-muted-foreground">/ 20</span>
+        <span className="pb-2 text-lg font-light">/ 20</span>
       </div>
-      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-medium">
+      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
         <TierDot tier={tier.key} />
         {tier.label}
       </div>
 
-      <div className="mt-8 rounded-xl border border-border bg-card p-5 sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold">
+      <div className="card-brand mt-8">
+        <div className="flex items-center gap-2 text-sm font-bold text-brand-navy">
           <Lock className="h-4 w-4 text-primary" />
           Unlock your full breakdown
         </div>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm font-light">
           See exactly which answers drove your score, and what a healthy agency
           relationship looks like on each one.
         </p>
@@ -499,27 +499,24 @@ function Teaser({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@company.com"
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+            className="w-full rounded-full border-2 border-[#f5f5f5] bg-white px-5 py-3 text-sm font-light outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
           {emailError && (
-            <p className="text-xs text-destructive">{emailError}</p>
+            <p className="text-xs font-light text-destructive">{emailError}</p>
           )}
-          <button
-            type="submit"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 sm:w-auto"
-          >
+          <button type="submit" className="btn-brand w-full text-sm sm:w-auto">
             Unlock my results
             <ArrowRight className="h-4 w-4" />
           </button>
         </form>
-        <p className="mt-3 text-xs text-muted-foreground">
+        <p className="mt-3 text-xs font-light text-brand-navy/60">
           No newsletter spam. Used only to send your breakdown and, if you want, one follow-up.
         </p>
       </div>
 
       <button
         onClick={onBack}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+        className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Change my last answer
