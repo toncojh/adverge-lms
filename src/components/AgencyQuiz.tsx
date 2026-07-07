@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, CheckCircle2, Lock, ShieldAlert, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Lock, ShieldAlert } from "lucide-react";
 
 type Answer = { label: string; points: 0 | 1 | 2 };
 type Question = {
@@ -15,14 +15,14 @@ const QUESTIONS: Question[] = [
     id: 1,
     theme: "Results",
     prompt:
-      "In the last 3 months, has your agency delivered results you can point to — leads, demos, or revenue?",
+      "In the last 3 months, has your agency delivered results you can point to: leads, demos, or revenue?",
     answers: [
       { label: "Yes, clearly", points: 0 },
       { label: "Some, but hard to tell what's working", points: 1 },
       { label: "Honestly, no", points: 2 },
     ],
     healthy:
-      "A healthy agency ties every month back to concrete business outcomes — not just deliverables.",
+      "A healthy agency ties every month back to concrete business outcomes, not just deliverables.",
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ const QUESTIONS: Question[] = [
       { label: "Every single time", points: 2 },
     ],
     healthy:
-      "The first response to weak results should be strategy and craft — not a bigger budget.",
+      "The first response to weak results should be strategy and craft, not a bigger budget.",
   },
   {
     id: 7,
@@ -123,7 +123,7 @@ const QUESTIONS: Question[] = [
       { label: "Impossible to follow", points: 2 },
     ],
     healthy:
-      "If a smart non-marketer can't follow the plan, the plan usually isn't the problem — the strategy is.",
+      "If a smart non-marketer can't follow the plan, the plan usually isn't the problem: the strategy is.",
   },
   {
     id: 10,
@@ -157,7 +157,7 @@ function tierFor(score: number): Tier {
       short: "Fundamentals look healthy.",
       headline: "Your agency is doing the fundamentals right.",
       body: () =>
-        "Nothing in your answers points to the patterns we usually see before a relationship breaks down. Worth a periodic check-in — the best partnerships get audited on purpose, not by accident.",
+        "Nothing in your answers points to the patterns we usually see before a relationship breaks down. Worth a periodic check-in. The best partnerships get audited on purpose, not by accident.",
     };
   }
   if (score <= 13) {
@@ -168,7 +168,7 @@ function tierFor(score: number): Tier {
       headline: "You're not imagining it.",
       body: (weak) =>
         `These are the exact patterns that come up right before people leave an agency${
-          weak.length ? ` — especially around ${joinList(weak)}` : ""
+          weak.length ? ` especially around ${joinList(weak)}` : ""
         }. Worth a second opinion before it gets worse.`,
     };
   }
@@ -180,7 +180,7 @@ function tierFor(score: number): Tier {
     body: (weak) =>
       `You flagged ${
         weak.length ? joinList(weak) : "multiple structural issues"
-      }. You're not stuck — there's a better way to do this, and it starts with an honest look at what you're actually paying for.`,
+      }. You're not stuck. There's a better way to do this, and it starts with an honest look at what you're actually paying for.`,
   };
 }
 
@@ -281,28 +281,20 @@ export function AgencyQuiz() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-8 sm:px-6 sm:py-12">
-        {/* Header / progress */}
-        <header className="mb-8">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <span className="text-sm font-semibold tracking-tight">Adverge</span>
-            </div>
-            {stage === "quiz" && (
-              <span className="text-xs font-medium text-muted-foreground tabular-nums">
-                {current + 1} / {QUESTIONS.length}
-              </span>
-            )}
+        {/* Progress bar */}
+        <div className="mb-8 h-1 w-full overflow-hidden rounded-full bg-muted">
+          <div
+            className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        {stage === "quiz" && (
+          <div className="-mb-2 text-right">
+            <span className="text-xs font-medium text-muted-foreground tabular-nums">
+              {current + 1} / {QUESTIONS.length}
+            </span>
           </div>
-          <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
-            <div
-              className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </header>
+        )}
 
         <main className="flex-1">
           {stage === "intro" && <Intro onStart={() => setStage("quiz")} />}
@@ -341,9 +333,6 @@ export function AgencyQuiz() {
           )}
         </main>
 
-        <footer className="mt-10 pt-6 text-center text-xs text-muted-foreground">
-          A diagnostic by Adverge. Your answers stay on this device.
-        </footer>
       </div>
     </div>
   );
@@ -375,7 +364,7 @@ function Intro({ onStart }: { onStart: () => void }) {
           "Same patterns we see every week",
         ].map((item) => (
           <li key={item} className="flex items-start gap-2">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <span>{item}</span>
           </li>
         ))}
@@ -415,20 +404,20 @@ function QuestionCard({
                 className={
                   "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3 text-left text-sm font-light transition sm:text-base " +
                   (isSelected
-                    ? "border-primary bg-primary/5 text-brand-navy"
-                    : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40 hover:bg-brand-mint")
+                    ? "border-primary text-brand-navy"
+                    : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40")
                 }
               >
                 <span>{a.label}</span>
                 <span
                   className={
-                    "grid h-5 w-5 shrink-0 place-items-center rounded-full border transition " +
+                    "grid h-5 w-5 shrink-0 place-items-center rounded-full transition " +
                     (isSelected
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border text-transparent group-hover:border-primary/50")
+                      ? "text-primary"
+                      : "text-transparent group-hover:text-primary/40")
                   }
                 >
-                  <CheckCircle2 className="h-3 w-3" />
+                  <Check className="h-4 w-4" />
                 </span>
               </button>
             );
