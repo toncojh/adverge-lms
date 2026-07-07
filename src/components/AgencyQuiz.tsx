@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Lock, ShieldAlert } from "lucide-react";
 
+
 type Answer = { label: string; points: 0 | 1 | 2 };
 type Question = {
   id: number;
@@ -280,7 +281,7 @@ export function AgencyQuiz() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-12 sm:px-6 sm:py-20">
         {/* Progress bar */}
         <div className="mb-8 h-1 w-full overflow-hidden rounded-full bg-muted">
           <div
@@ -288,13 +289,6 @@ export function AgencyQuiz() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        {stage === "quiz" && (
-          <div className="-mb-2 text-right">
-            <span className="text-xs font-medium text-muted-foreground tabular-nums">
-              {current + 1} / {QUESTIONS.length}
-            </span>
-          </div>
-        )}
 
         <main className="flex-1">
           {stage === "intro" && <Intro onStart={() => setStage("quiz")} />}
@@ -348,16 +342,16 @@ function Intro({ onStart }: { onStart: () => void }) {
       <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-navy sm:text-5xl">
         Is Your Agency Failing You?
       </h1>
-      <p className="mt-4 max-w-xl text-balance text-base font-light sm:text-lg">
+      <p className="mt-6 max-w-xl text-balance text-base font-light sm:text-lg">
         10 questions. 2 minutes. Find out if it's time for an honest conversation.
       </p>
 
-      <button onClick={onStart} className="btn-brand mt-8 text-sm">
+      <button onClick={onStart} className="btn-brand mt-10 text-sm">
         Start the assessment
         <ArrowRight className="h-4 w-4" />
       </button>
 
-      <ul className="mt-10 grid gap-3 text-sm font-light sm:grid-cols-3">
+      <ul className="mt-14 grid gap-4 text-sm font-light sm:grid-cols-3">
         {[
           "Built for €1M–€10M businesses",
           "No sales calls to take the quiz",
@@ -390,11 +384,11 @@ function QuestionCard({
         <p className="text-xs font-bold uppercase tracking-wider text-primary">
           {question.theme}
         </p>
-        <h2 className="mt-2 text-balance text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl">
+        <h2 className="mt-4 text-balance text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl">
           {question.prompt}
         </h2>
 
-        <div className="mt-6 grid gap-3">
+        <div className="mt-8 grid gap-4">
           {question.answers.map((a) => {
             const isSelected = selected === a.points;
             return (
@@ -402,7 +396,7 @@ function QuestionCard({
                 key={a.label}
                 onClick={() => onSelect(a.points)}
                 className={
-                  "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3 text-left text-sm font-light transition sm:text-base " +
+                  "group flex w-full items-center justify-between gap-4 rounded-full border-2 px-5 py-3.5 text-left text-sm font-light transition sm:text-base " +
                   (isSelected
                     ? "border-primary text-brand-navy"
                     : "border-[#f5f5f5] bg-white text-brand-body hover:border-primary/40")
@@ -428,7 +422,7 @@ function QuestionCard({
       {onBack && (
         <button
           onClick={onBack}
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
+          className="mt-8 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back
@@ -460,27 +454,27 @@ function Teaser({
       <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
         Your preliminary score
       </p>
-      <div className="mt-3 flex items-end gap-3">
+      <div className="mt-4 flex items-end gap-3">
         <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
           {score}
         </span>
         <span className="pb-2 text-lg font-light">/ 20</span>
       </div>
-      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
+      <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
         <TierDot tier={tier.key} />
         {tier.label}
       </div>
 
-      <div className="card-brand mt-8">
+      <div className="card-brand mt-10">
         <div className="flex items-center gap-2 text-sm font-bold text-brand-navy">
           <Lock className="h-4 w-4 text-primary" />
           Unlock your full breakdown
         </div>
-        <p className="mt-2 text-sm font-light">
+        <p className="mt-3 text-sm font-light">
           See exactly which answers drove your score, and what a healthy agency
           relationship looks like on each one.
         </p>
-        <form onSubmit={onSubmit} className="mt-4 space-y-3">
+        <form onSubmit={onSubmit} className="mt-5 space-y-3">
           <input
             type="email"
             required
@@ -498,14 +492,14 @@ function Teaser({
             <ArrowRight className="h-4 w-4" />
           </button>
         </form>
-        <p className="mt-3 text-xs font-light text-brand-navy/60">
+        <p className="mt-4 text-xs font-light text-brand-navy/60">
           No newsletter spam. Used only to send your breakdown and, if you want, one follow-up.
         </p>
       </div>
 
       <button
         onClick={onBack}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
+        className="mt-8 inline-flex items-center gap-1.5 text-sm font-light text-brand-navy/70 transition hover:text-brand-navy"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Change my last answer
@@ -540,28 +534,28 @@ function Results({
         <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
           Your result
         </p>
-        <div className="mt-3 flex items-end gap-3">
+        <div className="mt-4 flex items-end gap-3">
           <span className="text-6xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-7xl">
             {score}
           </span>
           <span className="pb-2 text-lg font-light">/ 20</span>
         </div>
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm font-semibold text-brand-navy">
           <TierDot tier={tier.key} />
           {tier.label}
         </div>
 
-        <h2 className="mt-6 text-balance text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
+        <h2 className="mt-8 text-balance text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
           {tier.headline}
         </h2>
-        <p className="mt-3 text-balance text-base font-light">
+        <p className="mt-5 text-balance text-base font-light">
           {tier.body(weakThemes)}
         </p>
       </div>
 
       <div
         className={
-          "mt-10 transition-all delay-150 duration-700 " +
+          "mt-14 transition-all delay-150 duration-700 " +
           (revealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
@@ -569,13 +563,13 @@ function Results({
           <ShieldAlert className="h-4 w-4 text-primary" />
           Full breakdown
         </h3>
-        <div className="mt-4 rounded-xl bg-brand-mint p-4 sm:p-5">
+        <div className="mt-6 rounded-xl bg-brand-mint p-5 sm:p-7">
           <ul className="divide-y divide-[#f5f5f5] overflow-hidden rounded-xl border-2 border-[#f5f5f5] bg-white">
             {QUESTIONS.map((q, i) => {
               const pts = answers[i] ?? 0;
               const chosen = q.answers.find((a) => a.points === pts)!;
               return (
-                <li key={q.id} className="grid gap-2 p-5 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-4">
+                <li key={q.id} className="grid gap-2 p-6 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-4">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-bold uppercase tracking-wider text-primary">
@@ -583,13 +577,13 @@ function Results({
                       </span>
                       <ScorePill points={pts} />
                     </div>
-                    <p className="mt-1 text-sm font-light text-brand-navy">
+                    <p className="mt-2 text-sm font-light text-brand-navy">
                       {q.prompt}
                     </p>
-                    <p className="mt-2 text-sm font-light">
+                    <p className="mt-3 text-sm font-light">
                       <span className="font-semibold text-brand-navy">Your answer:</span> {chosen.label}
                     </p>
-                    <p className="mt-2 text-sm font-light">
+                    <p className="mt-3 text-sm font-light">
                       <span className="font-semibold text-brand-navy">What healthy looks like:</span>{" "}
                       {q.healthy}
                     </p>
@@ -603,20 +597,20 @@ function Results({
 
       <div
         className={
-          "mt-10 rounded-xl p-6 transition-all delay-300 duration-700 sm:p-8 " +
+          "mt-14 rounded-xl p-6 transition-all delay-300 duration-700 sm:p-8 " +
           "bg-brand-navy text-brand-offwhite " +
           (revealed ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
         <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
           Want a second pair of eyes on your{" "}
-          <span className="text-brand-teal">pipeline</span>?
+          <span className="text-brand-teal">pipeline?</span>
         </h3>
-        <p className="mt-2 text-sm font-light text-brand-offwhite/85">
+        <p className="mt-3 text-sm font-light text-brand-offwhite/85">
           A 30-minute scan of what's working, what's not, and where the leaks are.
           No pitch, no commitment.
         </p>
-        <div className="mt-5 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           <a href="#" className="btn-brand text-sm">
             Get your free pipeline scan
             <ArrowRight className="h-4 w-4" />
