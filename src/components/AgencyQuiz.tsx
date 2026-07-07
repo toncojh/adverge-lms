@@ -333,9 +333,6 @@ export function AgencyQuiz() {
           )}
         </main>
 
-        <footer className="mt-10 pt-6 text-center text-xs text-muted-foreground">
-          A diagnostic by Adverge. Your answers stay on this device.
-        </footer>
       </div>
     </div>
   );
