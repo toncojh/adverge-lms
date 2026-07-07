@@ -15,7 +15,7 @@ const QUESTIONS: Question[] = [
     id: 1,
     theme: "Results",
     prompt:
-      "In the last 3 months, has your agency delivered results you can point to — leads, demos, or revenue?",
+      "In the last 3 months, has your agency delivered results you can point to: leads, demos, or revenue?",
     answers: [
       { label: "Yes, clearly", points: 0 },
       { label: "Some, but hard to tell what's working", points: 1 },
