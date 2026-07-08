@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Lock, ShieldAlert } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 type Answer = { label: string; points: 0 | 1 | 2 };
 type Question = {
@@ -346,10 +348,10 @@ function Intro({ onStart }: { onStart: () => void }) {
         10 questions. 2 minutes. Find out if it's time for an honest conversation.
       </p>
 
-      <button onClick={onStart} className="btn-brand mt-10 text-sm">
+      <Button onClick={onStart} variant="brand" size="brand" className="mt-10 text-sm">
         Start the assessment
         <ArrowRight className="h-4 w-4" />
-      </button>
+      </Button>
 
       <ul className="mt-14 grid gap-4 text-sm font-light sm:grid-cols-3">
         {[
@@ -380,7 +382,7 @@ function QuestionCard({
 }) {
   return (
     <div className="animate-in fade-in slide-in-from-right-2 duration-300">
-      <div className="card-brand">
+      <Card variant="brand">
         <p className="text-xs font-bold uppercase tracking-wider text-primary">
           {question.theme}
         </p>
@@ -417,7 +419,7 @@ function QuestionCard({
             );
           })}
         </div>
-      </div>
+      </Card>
 
       {onBack && (
         <button
@@ -465,7 +467,7 @@ function Teaser({
         {tier.label}
       </div>
 
-      <div className="card-brand mt-10">
+      <Card variant="brand" className="mt-10">
         <div className="flex items-center gap-2 text-sm font-bold text-brand-navy">
           <Lock className="h-4 w-4 text-primary" />
           Unlock your full breakdown
@@ -487,15 +489,15 @@ function Teaser({
           {emailError && (
             <p className="text-xs font-light text-destructive">{emailError}</p>
           )}
-          <button type="submit" className="btn-brand w-full text-sm sm:w-auto">
+          <Button type="submit" variant="brand" size="brand" className="w-full text-sm sm:w-auto">
             Unlock my results
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </Button>
         </form>
         <p className="mt-4 text-xs font-light text-brand-navy/60">
           No newsletter spam. Used only to send your breakdown and, if you want, one follow-up.
         </p>
-      </div>
+      </Card>
 
       <button
         onClick={onBack}
@@ -611,10 +613,12 @@ function Results({
           No pitch, no commitment.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <a href="#" className="btn-brand text-sm">
-            Get your free pipeline scan
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          <Button asChild variant="brand" size="brand" className="text-sm">
+            <a href="#">
+              Get your free pipeline scan
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
           <button
             onClick={onRestart}
             className="inline-flex items-center gap-2 rounded-full border-2 border-brand-offwhite/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-brand-offwhite transition hover:bg-brand-offwhite/10"

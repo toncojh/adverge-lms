@@ -112,36 +112,9 @@
   }
 }
 
-@utility btn-brand {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 10px 20px;
-  font-weight: 600;
-  background-color: #cc3366;
-  color: #ffffff;
-  box-shadow: none;
-  transition: background-color 150ms ease, color 150ms ease;
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(25, 26, 55, 0.85);
-    color: #f5f5fd;
-  }
-  &:focus-visible {
-    outline: 2px solid #cc3366;
-    outline-offset: 2px;
-  }
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-
-@utility card-brand {
-  border-radius: 12px;
-  border: 2px solid #f5f5f5;
-  background-color: #ffffff;
-  padding: 30px;
-}
+/*
+ * Brand-styled button/card look is implemented via the "brand" variant on the
+ * shared Button (src/components/ui/button.tsx) and Card
+ * (src/components/ui/card.tsx) components — use those instead of redefining
+ * these styles per-page.
+ */
