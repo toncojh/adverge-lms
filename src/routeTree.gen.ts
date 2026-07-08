@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RedFlagsQuizRouteImport } from './routes/red-flags-quiz'
+import { Route as CacPaybackCalculatorRouteImport } from './routes/cac-payback-calculator'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RedFlagsQuizRoute = RedFlagsQuizRouteImport.update({
   id: '/red-flags-quiz',
   path: '/red-flags-quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CacPaybackCalculatorRoute = CacPaybackCalculatorRouteImport.update({
+  id: '/cac-payback-calculator',
+  path: '/cac-payback-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cac-payback-calculator': typeof CacPaybackCalculatorRoute
   '/red-flags-quiz': typeof RedFlagsQuizRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cac-payback-calculator': typeof CacPaybackCalculatorRoute
   '/red-flags-quiz': typeof RedFlagsQuizRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cac-payback-calculator': typeof CacPaybackCalculatorRoute
   '/red-flags-quiz': typeof RedFlagsQuizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/red-flags-quiz'
+  fullPaths: '/' | '/cac-payback-calculator' | '/red-flags-quiz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/red-flags-quiz'
-  id: '__root__' | '/' | '/red-flags-quiz'
+  to: '/' | '/cac-payback-calculator' | '/red-flags-quiz'
+  id: '__root__' | '/' | '/cac-payback-calculator' | '/red-flags-quiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CacPaybackCalculatorRoute: typeof CacPaybackCalculatorRoute
   RedFlagsQuizRoute: typeof RedFlagsQuizRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/red-flags-quiz'
       fullPath: '/red-flags-quiz'
       preLoaderRoute: typeof RedFlagsQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cac-payback-calculator': {
+      id: '/cac-payback-calculator'
+      path: '/cac-payback-calculator'
+      fullPath: '/cac-payback-calculator'
+      preLoaderRoute: typeof CacPaybackCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CacPaybackCalculatorRoute: CacPaybackCalculatorRoute,
   RedFlagsQuizRoute: RedFlagsQuizRoute,
 }
 export const routeTree = rootRouteImport
