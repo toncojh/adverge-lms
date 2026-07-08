@@ -1,14 +1,12 @@
 import { useMemo, useState } from "react";
-import { ArrowRight } from "lucide-react";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   EMPTY_SAAS_METRICS_VALUES,
   SaasMetricsInputs,
   type SaasMetricsValues,
 } from "@/components/SaasMetricsInputs";
+import { CalculatorPageShell } from "@/components/CalculatorPageShell";
 
 type TierKey = "excellent" | "healthy" | "watch" | "concerning";
 
@@ -82,118 +80,74 @@ export function CacPaybackCalculator() {
 
   return (
     <TooltipProvider delayDuration={150}>
-      <div className="min-h-screen bg-background text-foreground">
-        <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-4 py-12 sm:px-6 sm:py-20">
-          <main className="flex-1">
-            <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-brand-navy">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                Free calculator
-              </div>
-              <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-navy sm:text-5xl">
-                What's a Good CAC Payback Period? Real SaaS Benchmarks (Not
-                Just the Formula)
-              </h1>
-              <p className="mt-6 max-w-xl text-balance text-base font-light sm:text-lg">
-                Enter your numbers below to see where you stand.
+      <CalculatorPageShell
+        title="What's a Good CAC Payback Period? Real SaaS Benchmarks (Not Just the Formula)"
+        subtitle="Enter your numbers below to see where you stand."
+        ctaHeadingSuffix={<span className="text-brand-teal">CAC payback?</span>}
+        form={
+          <div className="grid gap-6">
+            <SaasMetricsInputs values={values} onChange={updateValues} />
+          </div>
+        }
+        result={
+          months !== null && tier !== null ? (
+            <div className="animate-in fade-in duration-300">
+              <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
+                Your CAC payback period
               </p>
+              <div className="mt-3 flex flex-wrap items-end gap-3">
+                <span className="text-5xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-6xl">
+                  {months.toFixed(1)}
+                </span>
+                <span className="pb-1.5 text-lg font-light">months</span>
+              </div>
+              <span
+                className={
+                  "mt-4 inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold " +
+                  tier.badgeClass
+                }
+              >
+                {tier.label}
+              </span>
+              <p className="mt-4 max-w-xl text-balance text-sm font-light">
+                {tier.body}
+              </p>
+
+              {/* Benchmark bar */}
+              <div className="mt-8">
+                <div className="relative h-3 w-full overflow-hidden rounded-full bg-muted">
+                  <div className="absolute inset-0 flex">
+                    <div
+                      className="h-full bg-[#31937c]"
+                      style={{ width: `${(12 / MAX_SCALE_MONTHS) * 100}%` }}
+                    />
+                    <div
+                      className="h-full bg-[#31937c]/40"
+                      style={{ width: `${(6 / MAX_SCALE_MONTHS) * 100}%` }}
+                    />
+                    <div
+                      className="h-full bg-amber-500/60"
+                      style={{ width: `${(6 / MAX_SCALE_MONTHS) * 100}%` }}
+                    />
+                    <div className="h-full flex-1 bg-[#cc3366]/60" />
+                  </div>
+                  <div
+                    className="absolute top-1/2 h-4 w-4 -translate-y-1/2 -translate-x-1/2 rounded-full border-2 border-white bg-brand-navy shadow transition-[left] duration-300"
+                    style={{ left: `${markerPercent}%` }}
+                  />
+                </div>
+                <div className="mt-2 flex justify-between text-[11px] font-light text-brand-navy/60">
+                  <span>0</span>
+                  <span>12</span>
+                  <span>18</span>
+                  <span>24</span>
+                  <span>24+</span>
+                </div>
+              </div>
             </div>
-
-            {/* Inputs */}
-            <Card variant="brand" className="mt-10">
-              <div className="grid gap-6">
-                <SaasMetricsInputs values={values} onChange={updateValues} />
-              </div>
-            </Card>
-
-            {/* Results */}
-            {months !== null && tier !== null && (
-              <Card variant="brand" className="mt-8">
-                <div className="animate-in fade-in duration-300">
-                  <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
-                    Your CAC payback period
-                  </p>
-                  <div className="mt-3 flex flex-wrap items-end gap-3">
-                    <span className="text-5xl font-extrabold tracking-tight tabular-nums text-brand-navy sm:text-6xl">
-                      {months.toFixed(1)}
-                    </span>
-                    <span className="pb-1.5 text-lg font-light">months</span>
-                  </div>
-                  <span
-                    className={
-                      "mt-4 inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold " +
-                      tier.badgeClass
-                    }
-                  >
-                    {tier.label}
-                  </span>
-                  <p className="mt-4 max-w-xl text-balance text-sm font-light">
-                    {tier.body}
-                  </p>
-
-                  {/* Benchmark bar */}
-                  <div className="mt-8">
-                    <div className="relative h-3 w-full overflow-hidden rounded-full bg-muted">
-                      <div className="absolute inset-0 flex">
-                        <div
-                          className="h-full bg-[#31937c]"
-                          style={{ width: `${(12 / MAX_SCALE_MONTHS) * 100}%` }}
-                        />
-                        <div
-                          className="h-full bg-[#31937c]/40"
-                          style={{ width: `${(6 / MAX_SCALE_MONTHS) * 100}%` }}
-                        />
-                        <div
-                          className="h-full bg-amber-500/60"
-                          style={{ width: `${(6 / MAX_SCALE_MONTHS) * 100}%` }}
-                        />
-                        <div className="h-full flex-1 bg-[#cc3366]/60" />
-                      </div>
-                      <div
-                        className="absolute top-1/2 h-4 w-4 -translate-y-1/2 -translate-x-1/2 rounded-full border-2 border-white bg-brand-navy shadow transition-[left] duration-300"
-                        style={{ left: `${markerPercent}%` }}
-                      />
-                    </div>
-                    <div className="mt-2 flex justify-between text-[11px] font-light text-brand-navy/60">
-                      <span>0</span>
-                      <span>12</span>
-                      <span>18</span>
-                      <span>24</span>
-                      <span>24+</span>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            )}
-
-            {/* CTA */}
-            {months !== null && tier !== null && (
-              <div className="mt-10 rounded-xl bg-brand-navy p-6 text-brand-offwhite sm:p-8">
-                <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-                  Want help improving your{" "}
-                  <span className="text-brand-teal">CAC payback?</span>
-                </h3>
-                <p className="mt-3 text-sm font-light text-brand-offwhite/85">
-                  A 30-minute scan of what's working, what's not, and where the
-                  leaks are. No pitch, no commitment.
-                </p>
-                <div className="mt-6">
-                  <Button asChild variant="brand" size="brand" className="text-sm">
-                    <a
-                      href="https://adverge.com/performance-audit/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Get Your Free Pipeline Scan
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            )}
-          </main>
-        </div>
-      </div>
+          ) : null
+        }
+      />
     </TooltipProvider>
   );
 }
