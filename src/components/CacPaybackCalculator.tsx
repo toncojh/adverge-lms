@@ -214,12 +214,8 @@ export function CacPaybackCalculator() {
             </Card>
 
             {/* Results */}
-            <Card variant="brand" className="mt-8">
-              {months === null || tier === null ? (
-                <p className="text-sm font-light text-brand-navy/60">
-                  Enter your numbers above.
-                </p>
-              ) : (
+            {months !== null && tier !== null && (
+              <Card variant="brand" className="mt-8">
                 <div className="animate-in fade-in duration-300">
                   <p className="text-xs font-bold uppercase tracking-wider text-brand-navy/70">
                     Your CAC payback period
@@ -274,32 +270,34 @@ export function CacPaybackCalculator() {
                     </div>
                   </div>
                 </div>
-              )}
-            </Card>
+              </Card>
+            )}
 
             {/* CTA */}
-            <div className="mt-10 rounded-xl bg-brand-navy p-6 text-brand-offwhite sm:p-8">
-              <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-                Want help improving your{" "}
-                <span className="text-brand-teal">CAC payback?</span>
-              </h3>
-              <p className="mt-3 text-sm font-light text-brand-offwhite/85">
-                A 30-minute scan of what's working, what's not, and where the
-                leaks are. No pitch, no commitment.
-              </p>
-              <div className="mt-6">
-                <Button asChild variant="brand" size="brand" className="text-sm">
-                  <a
-                    href="https://adverge.com/performance-audit/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Get Your Free Pipeline Scan
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Button>
+            {months !== null && tier !== null && (
+              <div className="mt-10 rounded-xl bg-brand-navy p-6 text-brand-offwhite sm:p-8">
+                <h3 className="text-balance text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+                  Want help improving your{" "}
+                  <span className="text-brand-teal">CAC payback?</span>
+                </h3>
+                <p className="mt-3 text-sm font-light text-brand-offwhite/85">
+                  A 30-minute scan of what's working, what's not, and where the
+                  leaks are. No pitch, no commitment.
+                </p>
+                <div className="mt-6">
+                  <Button asChild variant="brand" size="brand" className="text-sm">
+                    <a
+                      href="https://adverge.com/performance-audit/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Get Your Free Pipeline Scan
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
-            </div>
+            )}
           </main>
         </div>
       </div>
