@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RedFlagsQuizRouteImport } from './routes/red-flags-quiz'
+import { Route as LtvCacCalculatorRouteImport } from './routes/ltv-cac-calculator'
 import { Route as CacPaybackCalculatorRouteImport } from './routes/cac-payback-calculator'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RedFlagsQuizRoute = RedFlagsQuizRouteImport.update({
   id: '/red-flags-quiz',
   path: '/red-flags-quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LtvCacCalculatorRoute = LtvCacCalculatorRouteImport.update({
+  id: '/ltv-cac-calculator',
+  path: '/ltv-cac-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CacPaybackCalculatorRoute = CacPaybackCalculatorRouteImport.update({
@@ -32,30 +38,41 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cac-payback-calculator': typeof CacPaybackCalculatorRoute
+  '/ltv-cac-calculator': typeof LtvCacCalculatorRoute
   '/red-flags-quiz': typeof RedFlagsQuizRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cac-payback-calculator': typeof CacPaybackCalculatorRoute
+  '/ltv-cac-calculator': typeof LtvCacCalculatorRoute
   '/red-flags-quiz': typeof RedFlagsQuizRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cac-payback-calculator': typeof CacPaybackCalculatorRoute
+  '/ltv-cac-calculator': typeof LtvCacCalculatorRoute
   '/red-flags-quiz': typeof RedFlagsQuizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cac-payback-calculator' | '/red-flags-quiz'
+  fullPaths:
+    '/' | '/cac-payback-calculator' | '/ltv-cac-calculator' | '/red-flags-quiz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cac-payback-calculator' | '/red-flags-quiz'
-  id: '__root__' | '/' | '/cac-payback-calculator' | '/red-flags-quiz'
+  to:
+    '/' | '/cac-payback-calculator' | '/ltv-cac-calculator' | '/red-flags-quiz'
+  id:
+    | '__root__'
+    | '/'
+    | '/cac-payback-calculator'
+    | '/ltv-cac-calculator'
+    | '/red-flags-quiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CacPaybackCalculatorRoute: typeof CacPaybackCalculatorRoute
+  LtvCacCalculatorRoute: typeof LtvCacCalculatorRoute
   RedFlagsQuizRoute: typeof RedFlagsQuizRoute
 }
 
@@ -66,6 +83,13 @@ declare module '@tanstack/react-router' {
       path: '/red-flags-quiz'
       fullPath: '/red-flags-quiz'
       preLoaderRoute: typeof RedFlagsQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ltv-cac-calculator': {
+      id: '/ltv-cac-calculator'
+      path: '/ltv-cac-calculator'
+      fullPath: '/ltv-cac-calculator'
+      preLoaderRoute: typeof LtvCacCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cac-payback-calculator': {
@@ -88,6 +112,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CacPaybackCalculatorRoute: CacPaybackCalculatorRoute,
+  LtvCacCalculatorRoute: LtvCacCalculatorRoute,
   RedFlagsQuizRoute: RedFlagsQuizRoute,
 }
 export const routeTree = rootRouteImport

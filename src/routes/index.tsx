@@ -66,6 +66,26 @@ function ToolsIndex() {
               </Button>
             </CardContent>
           </Card>
+
+          <Card variant="brand">
+            <CardHeader className="p-0">
+              <CardTitle className="text-lg text-brand-navy">
+                Is Your LTV:CAC Ratio Actually Healthy?
+              </CardTitle>
+              <CardDescription className="mt-2 font-light">
+                Enter your CAC, ARPU, gross margin, and churn rate to see how your unit economics
+                compare to real SaaS benchmarks.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-0">
+              <Button asChild variant="brand" size="brand" className="mt-6 text-sm">
+                <Link to="/ltv-cac-calculator">
+                  Open the calculator
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
