@@ -46,6 +46,26 @@ function ToolsIndex() {
               </Button>
             </CardContent>
           </Card>
+
+          <Card variant="brand">
+            <CardHeader className="p-0">
+              <CardTitle className="text-lg text-brand-navy">
+                What's a Good CAC Payback Period?
+              </CardTitle>
+              <CardDescription className="mt-2 font-light">
+                Enter your CAC, ARPU, and gross margin to see how you stack up against real SaaS
+                benchmarks.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-0">
+              <Button asChild variant="brand" size="brand" className="mt-6 text-sm">
+                <Link to="/cac-payback-calculator">
+                  Open the calculator
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
