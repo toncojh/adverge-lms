@@ -132,6 +132,7 @@ export function LtvCacCalculator() {
                       min={0}
                       max={100}
                       placeholder="3"
+                      autoComplete="off"
                       value={churn}
                       onChange={(e) => setChurn(e.target.value)}
                       className="w-full rounded-full border-2 border-[#f5f5f5] bg-white py-3 pl-5 pr-9 text-sm font-light outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"

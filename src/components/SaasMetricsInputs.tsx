@@ -88,6 +88,7 @@ export function SaasMetricsInputs({
             inputMode="decimal"
             min={0}
             placeholder="1500"
+            autoComplete="off"
             value={values.cac}
             onChange={(e) => onChange({ cac: e.target.value })}
             className="w-full rounded-full border-2 border-[#f5f5f5] bg-white py-3 pl-9 pr-5 text-sm font-light outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
@@ -112,6 +113,7 @@ export function SaasMetricsInputs({
             inputMode="decimal"
             min={0}
             placeholder="150"
+            autoComplete="off"
             value={values.arpu}
             onChange={(e) => onChange({ arpu: e.target.value })}
             className="w-full rounded-full border-2 border-[#f5f5f5] bg-white py-3 pl-16 pr-5 text-sm font-light outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
@@ -134,6 +136,7 @@ export function SaasMetricsInputs({
             min={0}
             max={100}
             placeholder="80"
+            autoComplete="off"
             value={values.grossMargin}
             onChange={(e) => onChange({ grossMargin: e.target.value })}
             className="w-full rounded-full border-2 border-[#f5f5f5] bg-white py-3 pl-5 pr-9 text-sm font-light outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
